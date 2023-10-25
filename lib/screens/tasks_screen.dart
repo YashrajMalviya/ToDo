@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_flutter/screens/add_task_screen.dart';
 import 'package:to_do_flutter/widgets/tasks_list.dart';
 
 class TaskScreen extends StatelessWidget {
   const TaskScreen({super.key});
 
-  Widget buildBottomSheet(BuildContext context) {
-    return const SizedBox(
-      height: 300,
-      child: Center(
-        child: Text("Bottom sheet"),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +13,7 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
-          showModalBottomSheet(context: context, builder: buildBottomSheet);
+          showModalBottomSheet(context: context, builder: (context) =>  const AddTaskScreen());
         },
         child: const Icon(Icons.add),
       ),
