@@ -5,7 +5,6 @@ import 'package:to_do_flutter/widgets/tasks_list.dart';
 class TaskScreen extends StatelessWidget {
   const TaskScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +12,10 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
-          showModalBottomSheet(context: context, builder: (context) =>  const AddTaskScreen());
+          showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (context) => const AddTaskScreen());
         },
         child: const Icon(Icons.add),
       ),
