@@ -6,7 +6,6 @@ import 'package:to_do_flutter/models/task.dart';
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
 
-
   @override
   State<TaskScreen> createState() => _TaskScreenState();
 }
@@ -26,9 +25,17 @@ class _TaskScreenState extends State<TaskScreen> {
         backgroundColor: Colors.lightBlueAccent,
         onPressed: () {
           showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (context) => const AddTaskScreen());
+            context: context,
+            isScrollControlled: true,
+            builder: (context) => AddTaskScreen(
+              addTaskCallback: (newTextTitle) {
+                setState(() {
+                  tasks.add(Task(name: newTextTitle));
+                });
+                Navigator.pop(context);
+              },
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),
@@ -39,10 +46,10 @@ class _TaskScreenState extends State<TaskScreen> {
             Container(
               padding: const EdgeInsets.only(
                   top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 30,
                     child: Icon(
@@ -51,10 +58,10 @@ class _TaskScreenState extends State<TaskScreen> {
                       color: Colors.lightBlueAccent,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'Todoey',
                     style: TextStyle(
                       color: Colors.white,
@@ -63,8 +70,8 @@ class _TaskScreenState extends State<TaskScreen> {
                     ),
                   ),
                   Text(
-                    '12 Tasks',
-                    style: TextStyle(
+                    '${tasks.length} Tasks',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                     ),
