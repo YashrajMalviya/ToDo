@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_flutter/screens/add_task_screen.dart';
 import 'package:to_do_flutter/widgets/tasks_list.dart';
+import 'package:to_do_flutter/models/task.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
+
+
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(name: "Complete Physics hw"),
+    Task(name: "Complete Chemistry hw"),
+    Task(name: "Complete Math hw"),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +82,7 @@ class TaskScreen extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                 ),
-                child: const TasksList(),
+                child: TasksList(tasks: tasks),
               ),
             ),
           ],
