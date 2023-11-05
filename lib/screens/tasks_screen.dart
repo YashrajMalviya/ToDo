@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_flutter/screens/add_task_screen.dart';
 import 'package:to_do_flutter/widgets/tasks_list.dart';
-import 'package:to_do_flutter/models/task.dart';
+import 'package:provider/provider.dart';
+import '../models/task_data.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -11,11 +12,7 @@ class TaskScreen extends StatefulWidget {
 }
 
 class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [
-    Task(name: "Complete Physics hw"),
-    Task(name: "Complete Chemistry hw"),
-    Task(name: "Complete Math hw"),
-  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +26,9 @@ class _TaskScreenState extends State<TaskScreen> {
             isScrollControlled: true,
             builder: (context) => AddTaskScreen(
               addTaskCallback: (newTextTitle) {
-                setState(() {
-                  tasks.add(Task(name: newTextTitle));
-                });
+                // setState(() {
+                //   tasks.add(Task(name: newTextTitle));
+                // });
                 Navigator.pop(context);
               },
             ),
@@ -70,7 +67,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     ),
                   ),
                   Text(
-                    '${tasks.length} Tasks',
+                    '${Provider.of<TaskData>(context).tasks.length} Tasks',
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
@@ -89,7 +86,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     topRight: Radius.circular(20),
                   ),
                 ),
-                child: TasksList(tasks: tasks),
+                child: const TasksList(),
               ),
             ),
           ],
