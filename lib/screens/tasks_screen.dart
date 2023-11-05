@@ -4,14 +4,9 @@ import 'package:to_do_flutter/widgets/tasks_list.dart';
 import 'package:provider/provider.dart';
 import '../models/task_data.dart';
 
-class TaskScreen extends StatefulWidget {
+class TaskScreen extends StatelessWidget{
   const TaskScreen({super.key});
 
-  @override
-  State<TaskScreen> createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
 
 
   @override
