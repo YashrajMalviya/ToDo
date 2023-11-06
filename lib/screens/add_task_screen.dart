@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:to_do_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function addTaskCallback;
-  const AddTaskScreen({super.key,required this.addTaskCallback});
+  const AddTaskScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class AddTaskScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Provider.of<TaskData>(context).addTask(newTaskTitle);
+                Provider.of<TaskData>(context,listen: false).addTask(newTaskTitle);
                 Navigator.pop(context);
               },
               style: ElevatedButton.styleFrom(
