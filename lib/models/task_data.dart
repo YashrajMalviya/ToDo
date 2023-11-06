@@ -7,4 +7,8 @@ class TaskData extends ChangeNotifier{
     Task(name: "Complete Chemistry hw"),
     Task(name: "Complete Math hw"),
   ];
+
+  int get taskCount{
+    return tasks.length;
+  }
 }
