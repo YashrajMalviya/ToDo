@@ -13,13 +13,15 @@ class TasksList extends StatelessWidget {
         // You can use the taskData(consumer/Provider) object to update the data
         return ListView.builder(
           itemBuilder: (context, index) {
+            final task = taskData.tasks[index];
             return TaskTile(
-              taskTitle: taskData.tasks[index].name,
-              isChecked: taskData.tasks[index].isDone,
+              taskTitle: task.name,
+              isChecked: task.isDone,
               checkboxCallback: (checkboxState) {
-                // setState((){
-                //   taskData.tasks[index].toggleDone();
-                // });
+                taskData.updateTask(task);
+              },
+              longPressCallback: (){
+                taskData.deleteTask(task);
               },
             );
           },
